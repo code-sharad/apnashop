@@ -1,0 +1,57 @@
+<%layout("/layouts/boilerplate")%>
+ 
+
+  <br><br> 
+<%if(curruser){%>
+<%for(let i=0;i<=or.length;i++){%>  
+  
+    <% for(let product of allproducts){%>  
+       <%  if(product._id==or[i]){ %>
+          
+
+        <div class="w-container">
+        <div class="w-card " id="p-card">  
+            <div id="w-image-container">
+            <img src="  <%=product.image1.url%>" alt="product-image" > 
+            </div>
+             <!-- <p id="p-title">&nbsp;<%=product.title%></p> -->
+             <div class="w-description">
+                <h5><%=product.title%></h5>   
+  
+              <h5><%=product.description%></h5>   
+              
+             
+              <p >     &#8377;   <%= product.price.toLocaleString("en-IN")%> </p>  
+           
+              <div >
+                <a href="/products/<%=product._id%>"><button id="playbutton-1" style="font-size: 15px;  margin-top:16px; margin-left:4px; " class="btn btn-dark" >buy </button></a>
+               
+                <form  method="post" action="/products/<%=product._id%>/addwhishlist?_method=DELETE"> 
+                    <button class="btn btn-dark offset-5"  style="font-size: 15px;  margin-top:-66px; margin-left:95px; "            >Delete</button>
+                </form>  
+
+            </div>
+          
+            </div>    
+
+       
+         </div>  
+            
+        </div> 
+        <% } %> 
+    <%}%> 
+
+    <%}%>   
+
+    <%}else{%> 
+      <div class="empty">
+        <img src="  https://res.cloudinary.com/dggnnjzgw/image/upload/v1707031242/apna-shop/empty_hamrz2.jpg " >
+       </div>
+    <%}%> 
+
+    <%  if(or.length==0){ %> 
+          <div class="empty">
+           <img src="  https://res.cloudinary.com/dggnnjzgw/image/upload/v1707031242/apna-shop/empty_hamrz2.jpg " >
+          </div>
+      <%}%>
+    <br><br> 

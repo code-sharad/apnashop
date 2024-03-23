@@ -1,0 +1,27 @@
+<%layout("/layouts/boilerplate")%> 
+ 
+        
+ <br>        <% if(curruser) {%> 
+    <h4>  @<%= udata.username%></h4>
+    <%}%>
+  
+<% if(!curruser){%>    
+    <div >
+        <a href="/login" ><button type="button" class="btn btn-success">Log in </button>
+        </a>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div >
+        <a href="/signup" ><button type="button" class="btn btn-success">Sign up</button>
+        </a>
+    </div>  
+    <%}%>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <% if(curruser) {%>   
+    <div >
+        <a href="/logout" ><button type="button" class="btn btn-danger">Log out</button>
+        </a>
+    </div>  
+    <%}%>

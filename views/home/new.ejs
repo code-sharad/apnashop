@@ -1,0 +1,77 @@
+<%layout("/layouts/boilerplate")%>
+          <!-- navbar [-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------] -->
+
+
+
+          
+
+
+          <br><br> 
+          <div class="new-product-form">
+          <form method="post" action="/products"  enctype= "multipart/form-data" > 
+
+            <lable for="title" class="title" >Enter Product Name :</lable> <br>
+                <input type="text" class="title-input" name="product[title]" placeholder="Name"   >
+                
+                <br><br>
+
+                <lable for="description" class="des" >Description of your product :</lable> <br>
+               <textarea typr="text" placeholder="description" class="des-input" name="product[description]" required></textarea>
+              
+               <br><br>
+
+
+
+               <lable for="image1" class="i1" >  Select first Image : cut the photo then send it aprox = 1080 into 1302 pixels : </lable> <br>
+               <input type="file"  class ="i1-input" name="image1"  required  >  
+
+               <br><br> 
+
+               <lable for="image2" class="i1" >Select second Image : cut the photo then send it aprox = 1080 into 1302 pixels :   </lable><br>
+               <input type="file" class="i1-input" name="image2" required > 
+
+               <br><br>
+
+               <lable for="image3" class="i1" > Select third Image : cut the photo then send it aprox = 1080 into 1302 pixels :         </lable> <br>
+               <input type="file"  class="i1-input" name="image3"  required> 
+
+               <br><br>
+
+                <lable for="price" class="title" >Enter the price of your product :</lable> <br>
+                <input  name="product[price]" class="title-input" placeholder=" price"  required>
+            
+                <br><br>
+
+                <lable for="location" class="title">Enter the location of your shop : </lable> <br>
+                <input type="text"    class="title-input" name="product[location]" placeholder=" Location"  required>
+           
+                <br><br>
+
+                <lable for="country" class="title">Enter the country name : </lable> <br>
+                <input type="text" class="title-input" name="product[country]" placeholder=" country name"  required>
+           
+                <br><br>
+
+                <lable for="shopname" class="title">Enter your shop name : </lable> <br>
+                <input type="text" class="title-input" name="product[shopname]" placeholder="shop name"  required>
+           
+                <br><br>
+
+                <lable for="phonenumber"  class="title">Enter the your shop phone number :</lable> <br>
+                <input  name="product[phonenumber]" class="title-input" placeholder=" phone no."  required>
+             
+                <br><br>
+                <lable for="size"  class="title"> Enter the size of your product : </lable> <br>
+                <input  name="product[size]" class="title-input" placeholder=" size" required > 
+
+
+  <br><br>
+                <button class="btn btn-success">submit</button>
+            </form>  
+            </div>
+    
+            <br>
+
+      
+
+  

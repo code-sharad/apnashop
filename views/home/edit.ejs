@@ -1,0 +1,121 @@
+ 
+ <%layout("/layouts/boilerplate")%>
+     
+
+ <br>
+      <h3> Edit a product</h3> 
+  <br>
+      <form method="POST" action="/products/<%=allproducts._id%>?_method=PUT"    enctype="multipart/form-data"   > 
+
+
+        <lable for="title"  class="title">Edit Product name:</lable> <br>
+        <input type="text" class="title-input" name="product[title]"  value="<%=allproducts.title%>"  required>
+        
+        <br><br>
+
+        <lable for="description" class="des" >Edit Desciption of your product:</lable>  <br>
+       <textarea type="text" class="des-input" name="product[description]" required>    <%=allproducts.description%>  </textarea>
+      
+       <br><br>
+<!-- 
+       <div class="slideshow-container">
+
+        
+        <div class="slideshow-container">
+  
+   
+          <div class="mySlides">  
+            <div class="numbertext">1 / 3</div>
+            <img src="<%=allproducts.image1.url%>" style="width:100%">
+            <div class="text"> Image 1</div>  
+          </div> 
+        
+          <div class="mySlides">       
+            <div class="numbertext">2  /  3</div>
+            <img src="<%=allproducts.image2.url%>" style="width:100%">
+            <div class="text">Image 2</div>
+          </div>
+        
+          <div class="mySlides">
+            <div class="numbertext">3 / 3</div>
+            <img src="<%=allproducts.image3.url%>" style="width:100%">
+            <div class="text">Image 3</div>
+          </div>
+        
+      
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a  class="next" onclick="plusSlides(1)">&#10095; </a>
+        </div>
+        <br>
+        
+  
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      
+      <br> -->
+
+
+   
+     
+        
+          <img src="<%=allproducts.image1.url%>"  class="i1-input" width="200px" height="250px">
+      
+      
+          <img src="<%=allproducts.image2.url%>"    class="i1-input"         width="200px" height="250px">
+      
+          <img src="<%=allproducts.image3.url%>"      class="i1-input"        width="200px" height="250px">
+        
+      
+  
+ <br><br>
+        <lable for="image1"  class="i1">  Image first: </lable>
+       <input type="file" class="i1-input" name="image1"       required > 
+
+       <br><br> 
+
+       <lable for="image2"  class="i1">Image second: </lable>
+       <input type="file" class="i1-input" name="image2"       required  > 
+
+       <br><br>
+
+       <lable for="image3" class="i1" >Image third: </lable>
+       <input type="file"  class="i1-input" name="image3"          required   >  
+
+       <br><br>
+
+        <lable for="price"  class="title">Edit the price of your product :</lable> <br>
+        <input   name="product[price]" class="title-input" value="<%=allproducts.price%>" required  >
+    
+        <br><br>
+
+        <lable for="location" class="title" >Edit  the location of your shop : </lable> <br>
+        <input type="text" class="title-input" name="product[location]" value="<%=allproducts.location%>"   required>
+   
+        <br><br>
+
+        <lable for="country" class="title" >Edit the country name : </lable> <br>
+        <input type="text"  class="title-input" name="product[country]" value="<%=allproducts.country%>"   required>
+   
+        <br><br>
+
+        <lable for="shopname" class="title" >Edit  your shop name: </lable> <br>
+        <input type="text" class="title-input" name="product[shopname]" value="<%=allproducts.shopname%>"   required>
+   
+        <br><br>
+
+        <lable for="phonenumber"  class="title">Edit the your shop phone number :</lable> <br>
+        <input type="number" class="title-input" name="product[phonenumber]" value="<%=allproducts.phonenumber%>"  required>
+     <br><br>
+        <lable for="size" class="title" > Edit the size of your product : </lable> <br>
+        <input  name="product[size]" class="title-input"  value="<%=allproducts.size%>"       required > 
+
+
+<br><br>
+        <button class="btn btn-success">submit</button>
+
+      </form> 
+<br>
+

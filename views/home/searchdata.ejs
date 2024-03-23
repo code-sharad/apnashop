@@ -1,0 +1,29 @@
+<%layout("/layouts/boilerplate")%>
+
+<br><br>
+<div class="all-products" >  
+        
+     
+         
+    <% for(let product of aproducts){%> 
+        
+       
+      <%if(product.title==pname){%> 
+           <%isfound=true%> 
+            <div class="card " id="p-card">  
+        <div id="image-container">
+        <img src="  <%=product.image1.url%>" alt="product-image" > 
+        </div>
+       
+          <a href="/products/<%=product._id%>"><button id="playbutton-1" style="font-size: 10px;  margin-top:16px; margin-left:4px; " class="btn btn-dark" >buy </button></a>
+      
+        </div>  
+        <%}%> 
+           <%}%>
+           <%if(!isfound){%>
+            <p>not found 🥲</p>
+        <%}%>
+           <script>
+            
+           </script>
+  </div> 

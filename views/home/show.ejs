@@ -1,0 +1,277 @@
+<%layout("/layouts/boilerplate")%>
+
+        <br><br>
+<!--      
+      this is for image slider --> 
+      <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides">
+          <div class="numbertext">1 / 3</div>
+          <img src="<%=allproducts.image1.url%>" style="width:100%">
+          <div class="text">Image 1 </div>
+        </div>
+      
+        <div class="mySlides">
+          <div class="numbertext">2 / 3</div>
+          <img src="<%=allproducts.image2.url%>" style="width:100%">
+          <div class="text">Image 2</div>
+        </div>
+      
+        <div class="mySlides">
+          <div class="numbertext">3 / 3</div>
+          <img src="<%=allproducts.image3.url%>" style="width:100%">
+          <div class="text">Image 3</div>
+        </div>
+      
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+      
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    
+ 
+
+       <br>
+       
+     <div class="description" >  
+            <br>  
+            <div class="">
+              <h5><%=allproducts.title%></h5>   
+
+            <h5><%=allproducts.description%></h5>   
+            
+             <br>
+            <p >     &#8377;   <%= allproducts.price.toLocaleString("en-IN")%> </p>  
+            <br>
+            <h6> Size : <%=allproducts.size%></h6> 
+            <br>
+            <h6> Location : <%=allproducts.location%></h6> 
+            <br>
+            <h6> shopname : <%=allproducts.shopname%></h6>  
+
+       </div> 
+       <br>   
+  
+       
+      <div class="show-btn">
+         <div class="buy-btn">
+            <a href="/products/<%=allproducts._id%>/buy"> <button  class="btn ml-xl-6 " style="background-color:#212529; color:white; "   >buy</button></a>
+           </div>  
+
+
+
+            <a href="/products/<%=allproducts._id%>/addwhishlist "> 
+
+           <button  class="btn ml-xl-6 " style="margin-left:0px; margin-top:5px;  background-color:#212529; color:white;  "   >Add to whishlist</button>   
+
+           </a>
+
+
+            
+       
+            <% if(curruser && curruser._id.equals(allproducts.owner._id)) {%>      
+              
+              <div class="delete-btn" >
+              <form  method="post" action="/products/<%=allproducts._id%>?_method=DELETE"> 
+                <button class="btn btn-dark offset-5  ">Delete</button>
+            </form>  
+            </div>   
+          
+            <div class="editt-btn">
+            <a href="/products/<%=allproducts._id%>/edit"> <button  class="btn btn-dark offset-5"  >edit</button></a>
+            <%}%>
+            </div>
+      </div>
+           
+            
+
+
+     
+    <div class="col-8 offset-2">  
+      <hr>   
+      <% if(curruser) {%>  
+      <h4>leave a review</h4> 
+      <form action="/products/<%=allproducts._id%>/reviews" method="POST" novalidate class="needs-validation">
+          <!-- <div class="mb-3 mt-3">
+              <label for="rating" class="form-label">rating</label>
+              <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]">
+          </div>  --> 
+
+          <br>
+            <label for="rating" class="form-label"> <h5>Rating : </h5> </label>
+          <fieldset class="starability-basic">
+            
+       
+              <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+              <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+
+          <div class="mb-3 mt-3"  >
+              <label for="comment" class="form-label"> <h5>Comment: </h5></label>
+               <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" style="border:2px solid black" required></textarea>
+                <div class="invalid-feedback">please submit some comment for review</div>
+                </div>
+          <button class="btn btn-outline-dark">submit</button>
+      </form>  
+      <%}%> 
+
+  <br>
+      <p><b> <h4>All reviews</h4></b></p>  
+      
+     <%for(review of allproducts.reviews){%>
+
+        
+         <div  class="review-card" >
+             <h5 class="card-title"> &nbsp; @<%=review.author.username%>  </h5>
+             <p class="card-text">  &nbsp; <%=review.comment%></p>
+         
+             
+       
+            <% if(review.rating=="1"){ %> 
+
+              <div class="s">
+                    &nbsp;  <p class="star">  <i class="fa-solid fa-star"></i>  </p> &nbsp;
+                    <%if(curruser){  %>    
+  
+                      <%   if(review.author.equals(curruser._id)) {  %>  
+          
+                       <form class="mb-3" method="post" action="/products/<%=allproducts._id%>/reviews/<%=review._id%>?_method=DELETE">
+                        &nbsp;      <button class="btn btn-sm btn-dark">delete</button>
+                       </form>
+                      <%}%> 
+          
+                      <%}%>
+              </div>
+            <%}%> 
+       
+            <%  if(review.rating=="2"){ %> 
+              <div class="s">
+                &nbsp; <p class="star">  <i class="fa-solid fa-star"></i>  </p>    <p class="star">  <i class="fa-solid fa-star"></i>  </p> 
+              <p class="star">  <i class="fa-solid fa-star"></i>  </p> &nbsp;
+
+              <%if(curruser){  %> 
+
+                <%   if(review.author.equals(curruser._id)) {  %>
+    
+                 <form class="mb-3" method="post" action="/products/<%=allproducts._id%>/reviews/<%=review._id%>?_method=DELETE">
+                  &nbsp;      <button class="btn btn-sm btn-dark">delete</button>
+                 </form>
+                <%}%> 
+    
+                <%}%>
+
+              </div>
+           <%  } %>
+
+           <%  if(review.rating=="3"){ %> 
+            <div class="s">
+              &nbsp; <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+            <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+            <p class="star">  <i class="fa-solid fa-star"></i>  </p> &nbsp;
+            <%if(curruser){  %> 
+
+              <%   if(review.author.equals(curruser._id)) {  %>
+  
+               <form class="mb-3" method="post" action="/products/<%=allproducts._id%>/reviews/<%=review._id%>?_method=DELETE">
+                &nbsp;      <button class="btn btn-sm btn-dark">delete</button>
+               </form>
+              <%}%> 
+  
+              <%}%>
+         </div>
+         <%  } %>
+
+         <%  if(review.rating=="4"){ %> 
+          <div class="s">
+            &nbsp; <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+          <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+          <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+          <p class="star">  <i class="fa-solid fa-star"></i>  </p> &nbsp;
+          <%if(curruser){  %> 
+
+            <%   if(review.author.equals(curruser._id)) {  %>
+
+             <form class="mb-3" method="post" action="/products/<%=allproducts._id%>/reviews/<%=review._id%>?_method=DELETE">
+              &nbsp;      <button class="btn btn-sm btn-dark">delete</button>
+             </form>
+            <%}%> 
+
+            <%}%>
+
+         </div>
+
+       <%  } %>
+
+       <%  if(review.rating=="5"){ %> 
+        <div class="s">
+          &nbsp; <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+        <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+        <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+        <p class="star">  <i class="fa-solid fa-star"></i>  </p>
+        <p class="star">  <i class="fa-solid fa-star"></i>  </p>  &nbsp;
+        <%if(curruser){  %> 
+
+          <%   if(review.author.equals(curruser._id)) {  %>
+
+           <form class="mb-3" method="post" action="/products/<%=allproducts._id%>/reviews/<%=review._id%>?_method=DELETE">
+            &nbsp;      <button class="btn btn-sm btn-dark">delete</button>
+           </form>
+          <%}%> 
+
+          <%}%>
+
+        </div>
+     <%  } %>
+
+             
+             <!-- <p class="starability-result card-text" data-rating="<%=review.rating%>">
+               </p>  -->
+               
+              
+            
+         </div>
+       
+
+  <%}%>
+   
+   
+<br><br>
+
+<div class="all-products" >  
+        
+     
+         
+  <% for(let product of aproducts){%> 
+      
+     
+    <%if(product.title==name){%> 
+    
+          <div class="card " id="p-card">  
+      <div id="image-container">
+      <img src="  <%=product.image1.url%>" alt="product-image" > 
+      </div>
+     
+        <a href="/products/<%=product._id%>"><button id="playbutton-1" style="font-size: 10px;  margin-top:16px; margin-left:4px; " class="btn btn-dark" >buy </button></a>
+    
+      </div>  
+      <%}%> 
+         <%}%>
+        
+</div> 
