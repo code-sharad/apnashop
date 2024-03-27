@@ -17,8 +17,8 @@
 }
 
 .card{
-    height:195px;
-    width:103px; 
+    height:295px;
+    width:170px; 
     margin-bottom:40px;
 }  
 
@@ -47,7 +47,31 @@
     margin-top: -114px;
     margin-left: 262px;
 }
+.description{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* margin-inline: 10vw; */
+        }
+     
+@media (max-width:620px) {
+        .description{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            margin-left: 50px;
+            
+        }
+        .review-card{
+    margin-top:21px; 
+    height:103px;  
+    /* width:351px;  */
+    border:2px solid black; 
+    border-radius:15px;
+} 
+         
 
+} 
 .all-products{
     display:flex ; 
     flex-wrap:wrap; 
@@ -128,7 +152,17 @@ border-radius:5px;
     font-size:18.5px;
 
 } 
+.buy-btn{
+    margin-top: 5px;
+}
+.show-btn{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+    width: 400px;
 
+}
 
 .whishlist{
     margin-top: 16px;
@@ -192,11 +226,15 @@ border-radius:5px;
 
 
     .profile{
+        margin-left:-11px;
         margin-top: 4px;
         height: 40px;
         width: 178px;
         color:#2c4152; 
     } 
+    .p-p{
+        display:none;
+    }
 
     .profile a{
         color:#2c4152;  
@@ -290,13 +328,9 @@ border-radius:5px;
 
     .deso{
         margin-left:422px;
-    }   
-    
-.show-btn{
-    text-align: start;
-    display: flex;
-      gap:1rem;
-}
+    }    
+
+
 
 .delete-btn{
     margin-top:27px;
@@ -307,38 +341,27 @@ border-radius:5px;
     margin-top: 14px;
     margin-left: 656px;
 }
-.description{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* margin-inline: 10vw; */
-        }
      
 
 .star{
     color:darkorange; 
     font-size: 16px;
 } 
-@media (max-width:620px) {
-        .description{
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            margin-left: 50px;
-            
-        }
-        .review-card{
+
+.review-card{
     margin-top:21px; 
     height:103px;  
-    /* width:351px;  */
+    /* width:451px;  */
+    
     border:2px solid black; 
     border-radius:15px;
 } 
-         
+.center{
+    width: 16/9;
+    max-width: 600px;
+    margin: 0 auto;
 
-} 
-
-
+}
 .s{
     display:flex;
 } 
@@ -363,9 +386,7 @@ border-radius:5px;
    
 
 
-   .profile{
-    display:block;
-   } 
+
 
    /* .navvv{
     border:2px solid black;
@@ -373,12 +394,20 @@ border-radius:5px;
     margin-top:6px;
    }  */
    
+ .profile{
+    margin-left:37px;
+ }  
+
+ 
+
+ 
+
  
    .navbar-nav{
     border: 2px solid black;
     width: 210px;
     margin-top: 6px;
-    height: 211px;
+    height: 254px;
     background-color:#ebebeb;
     border-radius: 5px;
    }
@@ -396,6 +425,18 @@ border-radius:5px;
 
    .home a{
     margin-left:28px;
+   } 
+
+   .profile a i{
+    margin-left:-82px;
+    font-size:20px;
+   } 
+
+   .p-p{
+    display:inline;
+    font-size: 18px;
+    margin-top:-33px;
+    margin-left:16px;
    }
 
    .new-product a{

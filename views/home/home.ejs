@@ -15,14 +15,15 @@
         
           
           <div class="card " id="p-card">  
+            <a href="/products/<%=product._id%>">
             <div id="image-container">
             <img src="  <%=product.image1.url%>" alt="product-image" > 
             </div>
              <!-- <p id="p-title">&nbsp;<%=product.title%></p> -->
-              <a href="/products/<%=product._id%>"><button id="playbutton-1" style="font-size: 10px;  margin-top:16px; margin-left:4px; " class="btn btn-dark" >buy </button></a>
-          
+              <button id="playbutton-1" style="font-size: 10px; scale: 105%;  margin-top:16px; margin-left:4px; " class="btn btn-dark" >buy </button>
+            </a>
             </div>  
-
+            
           <%}%>
       </div> 
       

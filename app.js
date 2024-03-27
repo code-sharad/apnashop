@@ -187,12 +187,12 @@ app.get("/products/profile",wrapasync(async(req,res)=>{
 
 
 
-app.use("/products",productsrouter); 
+    app.use("/products",productsrouter); 
 
+  
+    app.use("/products/:id/reviews",reviewsrouter); 
 
-app.use("/products/:id/reviews",reviewsrouter); 
-
-app.use("",userrouter); 
+    app.use("",userrouter); 
 
 
 
